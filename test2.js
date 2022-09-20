@@ -1,4 +1,3 @@
-let x = [1, 2, 3];
-
-y = Math.max(...x);
-console.log(y);
+let y = "abcdef";
+x = y[y.length - 1];
+console.log(x);
