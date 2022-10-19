@@ -2,17 +2,12 @@ const fs = require('fs');
 let input = fs.readFileSync('input.txt').toString().split('\n');
 
 N = Number(input[0]);
-A = input[1]
-  .split(' ')
-  .map(Number)
-  .sort((a, b) => {
-    return a > b ? 1 : a == b ? 0 : -1;
-  });
+A = input[1].split(' ').map(Number).sort();
 M = Number(input[2]);
 B = input[3].split(' ').map(Number);
 
 const isInArray = (x, l, r) => {
-  const mid = parseInt((r + l) / 2);
+  const mid = parseInt((r - l) / 2);
 
   if (A[mid] === x) {
     return 1;
@@ -21,15 +16,14 @@ const isInArray = (x, l, r) => {
   }
 
   if (A[mid] < x) {
-    return isInArray(x, mid + 1, r);
+    return isInArray(x, mid, r);
   } else {
     return isInArray(x, l, mid);
   }
 };
+x = isInArray(4, 0, A.length - 1);
 
+console.log(x);
 ans = '';
 
-B.forEach((element) => {
-  ans += `${isInArray(element, 0, A.length)}\n`;
-});
-console.log(ans);
+console.log(A);
